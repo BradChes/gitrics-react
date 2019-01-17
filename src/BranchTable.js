@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 
 class BranchTable extends Component {
     render() {
+
+      const { branchData } = this.props;
+
         return (
           <table>
               <TableHeader />
-              <TableBody />
+              <TableBody branchData={branchData} />
           </table>
         );
     }
@@ -21,14 +24,16 @@ const TableHeader = () => {
     );
 }
 
-const TableBody = () => {
-    return (
-      <tbody>
-          <tr>
-              <td>Branch-1</td>
-          </tr>
-        </tbody>
-    );
+const TableBody = props => {
+    const rows = props.branchData.map((row, index) => {
+        return (
+            <tr key={index}>
+                <td>{row.branch}</td>
+            </tr>
+        );
+    });
+
+    return <tbody>{rows}</tbody>;
 }
 
 export default BranchTable;
