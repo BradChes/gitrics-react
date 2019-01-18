@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BranchTable from './BranchTable';
 
 class App extends Component {
     state = {
@@ -34,19 +35,17 @@ class App extends Component {
 
     render() {
         const all = this.state.all;
-        const allResult = all.map((entry, index) => {
-            return <li key={index}>{entry.name}, {this.state.allSize}</li>;
-        });
-
         const fix = this.state.fix;
-        const fixResult = fix.map((entry, index) => {
-            return <li key={index}>{entry.name}, {this.state.fixSize}</li>;
-        });
 
         return (
+
           <div className="container">
-            <ul>{allResult}</ul>
-            <ul>{fixResult}</ul>
+          <h1>All Branches</h1>
+          <BranchTable branchData={all}/>
+          <h1>All Branches {this.state.allSize}</h1>
+          <br/>
+          <h1>Fix Branches</h1>
+          <BranchTable branchData={fix}/>
           </div>
         )
     }

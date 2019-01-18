@@ -18,17 +18,25 @@ const TableHeader = () => {
     return (
         <thead>
             <tr>
-                <th>Branch</th>
+                <th>Name</th>
+                <th>First Creation</th>
+                <th>Last Commit</th>
+                <th>Stale</th>
+                <th>Merged</th>
             </tr>
         </thead>
     );
 }
 
-const TableBody = props => {
-    const rows = props.branchData.map((row, index) => {
+const TableBody = state => {
+    const rows = state.branchData.map((row, index) => {
         return (
             <tr key={index}>
-                <td>{row.branch}</td>
+                <td>{row.name}</td>
+                <td>{row.firstCreation}</td>
+                <td>{row.lastCommit}</td>
+                <td>{row.stale.toString()}</td>
+                <td>{row.merged.toString()}</td>
             </tr>
         );
     });
