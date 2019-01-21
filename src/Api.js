@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BranchTable from './BranchTable';
+import BranchStatus from './BranchStatus';
 
 class App extends Component {
     state = {
@@ -34,7 +35,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  feat: result.branches,
+                  feat: result.branches
                 })
             });
 
@@ -42,7 +43,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  spike: result.branches,
+                  spike: result.branches
                 })
             });
 
@@ -50,7 +51,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  fix: result.branches,
+                  fix: result.branches
                 })
             });
 
@@ -58,7 +59,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  other: result.branches,
+                  other: result.branches
                 })
             });
 
@@ -66,7 +67,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  unmerged: result.branches,
+                  unmerged: result.branches
                 })
             });
 
@@ -74,7 +75,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  stale: result.branches,
+                  stale: result.branches
                 })
             });
     }
@@ -92,6 +93,13 @@ class App extends Component {
         return (
 
           <div className="container">
+          <h1>Statuses</h1>
+          <h2>Spike</h2>
+          <BranchStatus branchData={spike.length}/>
+          <h2>Stale</h2>
+          <BranchStatus branchData={stale.length}/>
+          <h2>Unmerged</h2>
+          <BranchStatus branchData={unmerged.length}/>
           <h1>All Branches</h1>
           <BranchTable branchData={all}/>
           <br/>
