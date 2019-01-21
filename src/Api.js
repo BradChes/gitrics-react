@@ -5,14 +5,19 @@ class App extends Component {
     state = {
         all: [],
         feat: [],
-        fix: []
+        spike: [],
+        fix: [],
+        other: []
     };
 
     // Code is invoked after the component is mounted/inserted into the DOM tree.
     componentDidMount() {
         const allUrl = "/branches";
         const featUrl = "/branches/feat";
+        const spikeUrl = "/branches/spike";
         const fixUrl = "/branches/fix";
+        const otherUrl = "/branches/other";
+
 
         fetch(allUrl)
             .then(result => result.json())
@@ -30,6 +35,14 @@ class App extends Component {
                 })
             });
 
+        fetch(spikeUrl)
+            .then(result => result.json())
+            .then(result => {
+                this.setState({
+                  spike: result.branches,
+                })
+            });
+
         fetch(fixUrl)
             .then(result => result.json())
             .then(result => {
@@ -37,12 +50,23 @@ class App extends Component {
                   fix: result.branches,
                 })
             });
+
+        fetch(otherUrl)
+            .then(result => result.json())
+            .then(result => {
+                this.setState({
+                  other: result.branches,
+                })
+            });
     }
 
     render() {
         const all = this.state.all;
         const feat = this.state.feat;
+        const spike = this.state.spike;
         const fix = this.state.fix;
+        const other = this.state.other;
+
 
 
         return (
@@ -54,8 +78,14 @@ class App extends Component {
           <h1>Feat Branches</h1>
           <BranchTable branchData={feat}/>
           <br/>
+          <h1>Spike Branches</h1>
+          <BranchTable branchData={spike}/>
+          <br/>
           <h1>Fix Branches</h1>
           <BranchTable branchData={fix}/>
+          <br/>
+          <h1>Other Branches</h1>
+          <BranchTable branchData={other}/>
           </div>
         )
     }
