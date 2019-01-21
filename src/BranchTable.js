@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './bootstrap.css';
 
 class BranchTable extends Component {
     render() {
@@ -17,8 +18,8 @@ class BranchTable extends Component {
 const TableHeader = () => {
     return (
         <thead>
-            <tr>
-                <th>Branch</th>
+            <tr className="table-primary">
+                <th scope="row">Branch</th>
             </tr>
         </thead>
     );

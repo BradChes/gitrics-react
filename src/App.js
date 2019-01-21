@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BranchTable from './BranchTable';
+import './bootstrap.css';
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
       ];
         return (
           <div className="container">
-            <BranchTable branchData={fakeson}/>
+            <BranchTable className="table table-hover" branchData={fakeson}/>
           </div>
         );
     }
