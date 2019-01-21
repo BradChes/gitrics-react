@@ -7,7 +7,8 @@ class App extends Component {
         feat: [],
         spike: [],
         fix: [],
-        other: []
+        other: [],
+        unmerged: []
     };
 
     // Code is invoked after the component is mounted/inserted into the DOM tree.
@@ -17,6 +18,8 @@ class App extends Component {
         const spikeUrl = "/branches/spike";
         const fixUrl = "/branches/fix";
         const otherUrl = "/branches/other";
+        const unmergedUrl = "/branches/unmerged";
+
 
 
         fetch(allUrl)
@@ -58,6 +61,14 @@ class App extends Component {
                   other: result.branches,
                 })
             });
+
+        fetch(unmergedUrl)
+            .then(result => result.json())
+            .then(result => {
+                this.setState({
+                  unmerged: result.branches,
+                })
+            });
     }
 
     render() {
@@ -66,7 +77,7 @@ class App extends Component {
         const spike = this.state.spike;
         const fix = this.state.fix;
         const other = this.state.other;
-
+        const unmerged = this.state.unmerged;
 
 
         return (
@@ -86,6 +97,9 @@ class App extends Component {
           <br/>
           <h1>Other Branches</h1>
           <BranchTable branchData={other}/>
+          <br/>
+          <h1>Unmerged Branches</h1>
+          <BranchTable branchData={unmerged}/>
           </div>
         )
     }
