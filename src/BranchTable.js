@@ -19,17 +19,25 @@ const TableHeader = () => {
     return (
         <thead>
             <tr className="table-primary">
-                <th scope="row">Branch</th>
+                <th scope="row">Name</th>
+                <th scope="row">First Creation</th>
+                <th scope="row">Last Commit</th>
+                <th scope="row">Stale</th>
+                <th scope="row">Merged</th>
             </tr>
         </thead>
     );
 }
 
-const TableBody = props => {
-    const rows = props.branchData.map((row, index) => {
+const TableBody = state => {
+    const rows = state.branchData.map((row, index) => {
         return (
             <tr key={index}>
-                <td>{row.branch}</td>
+                <td>{row.name}</td>
+                <td>{row.firstCreation}</td>
+                <td>{row.lastCommit}</td>
+                <td>{row.stale.toString()}</td>
+                <td>{row.merged.toString()}</td>
             </tr>
         );
     });
