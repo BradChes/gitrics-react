@@ -6,12 +6,18 @@ class BranchTable extends Component {
 
       const { branchData } = this.props;
 
-        return (
-          <table>
-              <TableHeader />
-              <TableBody branchData={branchData} />
-          </table>
-        );
+        if (branchData.length != 0) {
+          return (
+            <table>
+                <TableHeader />
+                <TableBody branchData={branchData} />
+            </table>
+          );
+        } else {
+          return (
+            <p>No information to be shown.</p>
+          )
+        }
     }
 }
 

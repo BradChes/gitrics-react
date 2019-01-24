@@ -118,7 +118,6 @@ class App extends Component {
               <h2>Feat Branches</h2>
               <BranchTable branchData={feat}/>
               <h2>Merged Branches</h2>
-              <br/>
               <BranchTable branchData={merged}/>
               <br/>
               <h2>Unmerged Branches</h2>
