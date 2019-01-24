@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import BranchTable from './BranchTable';
+import BranchStatus from './BranchStatus';
+import './style.css';
 
 class App extends Component {
     state = {
@@ -34,7 +36,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  feat: result.branches,
+                  feat: result.branches
                 })
             });
 
@@ -42,7 +44,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  spike: result.branches,
+                  spike: result.branches
                 })
             });
 
@@ -50,7 +52,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  fix: result.branches,
+                  fix: result.branches
                 })
             });
 
@@ -58,7 +60,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  other: result.branches,
+                  other: result.branches
                 })
             });
 
@@ -66,7 +68,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  unmerged: result.branches,
+                  unmerged: result.branches
                 })
             });
 
@@ -74,7 +76,7 @@ class App extends Component {
             .then(result => result.json())
             .then(result => {
                 this.setState({
-                  stale: result.branches,
+                  stale: result.branches
                 })
             });
     }
@@ -92,26 +94,35 @@ class App extends Component {
         return (
 
           <div className="container">
-          <h1>All Branches</h1>
-          <BranchTable branchData={all}/>
-          <br/>
-          <h1>Feat Branches</h1>
-          <BranchTable branchData={feat}/>
-          <br/>
-          <h1>Spike Branches</h1>
-          <BranchTable branchData={spike}/>
-          <br/>
-          <h1>Fix Branches</h1>
-          <BranchTable branchData={fix}/>
-          <br/>
-          <h1>Other Branches</h1>
-          <BranchTable branchData={other}/>
-          <br/>
-          <h1>Unmerged Branches</h1>
-          <BranchTable branchData={unmerged}/>
-          <br/>
-          <h1>Stale Branches</h1>
-          <BranchTable branchData={stale}/>
+            <h1>gitrics™</h1>
+            <h2>Status</h2>
+            <div className="cardArea">
+              <BranchStatus branchSize={spike.length} branchName={"Spike"}/>
+              <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
+              <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
+            </div>
+            <div className="listArea">
+              <h2>All Branches</h2>
+              <BranchTable branchData={all}/>
+              <br/>
+              <h2>Feat Branches</h2>
+              <BranchTable branchData={feat}/>
+              <br/>
+              <h2>Spike Branches</h2>
+              <BranchTable branchData={spike}/>
+              <br/>
+              <h2>Fix Branches</h2>
+              <BranchTable branchData={fix}/>
+              <br/>
+              <h2>Other Branches</h2>
+              <BranchTable branchData={other}/>
+              <br/>
+              <h2>Unmerged Branches</h2>
+              <BranchTable branchData={unmerged}/>
+              <br/>
+              <h2>Stale Branches</h2>
+              <BranchTable branchData={stale}/>
+            </div>
           </div>
         )
     }
