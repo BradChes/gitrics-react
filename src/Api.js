@@ -117,6 +117,12 @@ class App extends Component {
               <br/>
               <h2>Feat Branches</h2>
               <BranchTable branchData={feat}/>
+              <h2>Merged Branches</h2>
+              <br/>
+              <BranchTable branchData={merged}/>
+              <br/>
+              <h2>Unmerged Branches</h2>
+              <BranchTable branchData={unmerged}/>
               <br/>
               <h2>Spike Branches</h2>
               <BranchTable branchData={spike}/>
@@ -126,9 +132,6 @@ class App extends Component {
               <br/>
               <h2>Other Branches</h2>
               <BranchTable branchData={other}/>
-              <br/>
-              <h2>Unmerged Branches</h2>
-              <BranchTable branchData={unmerged}/>
               <br/>
               <h2>Stale Branches</h2>
               <BranchTable branchData={stale}/>
