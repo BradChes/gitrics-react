@@ -11,6 +11,7 @@ class App extends Component {
         fix: [],
         other: [],
         unmerged: [],
+        merged: [],
         stale: []
     };
 
@@ -22,6 +23,7 @@ class App extends Component {
         const fixUrl = "/branches/fix";
         const otherUrl = "/branches/other";
         const unmergedUrl = "/branches/unmerged";
+        const mergedUrl = "/branches/merged";
         const staleUrl = "/branches/stale";
 
         fetch(allUrl)
@@ -72,6 +74,14 @@ class App extends Component {
                 })
             });
 
+        fetch(mergedUrl)
+            .then(result => result.json())
+            .then(result => {
+                this.setState({
+                  merged: result.branches
+                })
+            });
+
         fetch(staleUrl)
             .then(result => result.json())
             .then(result => {
@@ -88,8 +98,8 @@ class App extends Component {
         const fix = this.state.fix;
         const other = this.state.other;
         const unmerged = this.state.unmerged;
+        const merged = this.state.merged;
         const stale = this.state.stale;
-
 
         return (
 
@@ -97,7 +107,7 @@ class App extends Component {
             <h1>gitrics™</h1>
             <h2>Status</h2>
             <div className="cardArea">
-              <BranchStatus branchSize={spike.length} branchName={"Spike"}/>
+              <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
               <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
               <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
             </div>

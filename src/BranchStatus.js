@@ -16,11 +16,13 @@ class BranchStatus extends Component {
 }
 
 const BranchCard = props => {
+console.log(props.branchName);
+  console.log(props.branchSize);
   if(props.branchSize > 30) {
     return <BranchBad branchSize={props.branchSize} branchName={props.branchName}/>
   } else if(props.branchSize < 20 & props.branchSize >= 15) {
     return <BranchWarning branchSize={props.branchSize} branchName={props.branchName}/>
-  } else if(props.branchSize < 15 & props.branchSize === 0){
+  } else if(props.branchSize < 15 & props.branchSize >= 0) {
     return <BranchGood branchSize={props.branchSize} branchName={props.branchName}/>
   } else {
     return  <BranchPlaceholder />
