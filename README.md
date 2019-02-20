@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**Note: to run this project you'll first need to have the Gitrics API service running on [http://localhost:8080](http://localhost:8080)**
+**Note: to run this project you'll first need to have the [Gitrics](https://github.com/BradChes/gitrics) API service running on [http://localhost:8080](http://localhost:8080)**
 
 ## Available Scripts
 
