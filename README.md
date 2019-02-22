@@ -2,6 +2,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 **Note: to run this project you'll first need to have the [Gitrics](https://github.com/BradChes/gitrics) API service running on [http://localhost:8080](http://localhost:8080)**
 
+## Introduction
+This is the Example UI for the [Gitrics](https://github.com/BradChes/gitrics) API. This React Application shows a table of all the branches endpoints as well as four quick glance information cards at the top.
+
+## How to run
+See Available Scripts for information on how to run the React App.
+
 ## Available Scripts
 
 In the project directory, you can run:
