@@ -5,69 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './style.css';
 
 class App extends Component {
-    state = {
-        // all: [],
-        // feat: [],
-        // spike: [],
-        // fix: [],
-        // other: []
-    };
-
-    componentDidMount() {
-        // const allUrl = "/branches";
-        // const featUrl = "/branches/feat";
-        // const spikeUrl = "/branches/spike";
-        // const fixUrl = "/branches/fix";
-        // const otherUrl = "/branches/other";
-
-        // fetch(allUrl)
-        //     .then(result => result.json())
-        //     .then(result => {
-        //         this.setState({
-        //           all: result.branches,
-        //         })
-        //     });
-
-        // fetch(featUrl)
-        //     .then(result => result.json())
-        //     .then(result => {
-        //         this.setState({
-        //           feat: result.branches
-        //         })
-        //     });
-
-        // fetch(spikeUrl)
-        //     .then(result => result.json())
-        //     .then(result => {
-        //         this.setState({
-        //           spike: result.branches
-        //         })
-        //     });
-
-        // fetch(fixUrl)
-        //     .then(result => result.json())
-        //     .then(result => {
-        //         this.setState({
-        //           fix: result.branches
-        //         })
-        //     });
-
-        // fetch(otherUrl)
-        //     .then(result => result.json())
-        //     .then(result => {
-        //         this.setState({
-        //           other: result.branches
-        //         })
-        //     });
-    }
-
     render() {
-        // const all = this.state.all;
-        // const feat = this.state.feat;
-        // const spike = this.state.spike;
-        // const fix = this.state.fix;
-        // const other = this.state.other;
-
         return (
           <Router>
             <div className="container">
