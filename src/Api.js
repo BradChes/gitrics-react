@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BranchTable from './BranchTable';
 import BranchStatus from './BranchStatus';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './style.css';
 
 class App extends Component {
@@ -102,40 +103,41 @@ class App extends Component {
         const stale = this.state.stale;
 
         return (
-
-          <div className="container">
-            <h1>gitrics™</h1>
-            <h2>Status</h2>
-            <div className="cardArea">
-              <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
-              <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
-              <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
+          <Router>
+            <div className="container">
+              <h1>gitrics™</h1>
+              <h2>Status</h2>
+              <div className="cardArea">
+                <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
+                <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
+                <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
+              </div>
+              <div className="listArea">
+                <h2>All Branches</h2>
+                <BranchTable branchData={all}/>
+                <br/>
+                <h2>Feat Branches</h2>
+                <BranchTable branchData={feat}/>
+                <h2>Merged Branches</h2>
+                <BranchTable branchData={merged}/>
+                <br/>
+                <h2>Unmerged Branches</h2>
+                <BranchTable branchData={unmerged}/>
+                <br/>
+                <h2>Spike Branches</h2>
+                <BranchTable branchData={spike}/>
+                <br/>
+                <h2>Fix Branches</h2>
+                <BranchTable branchData={fix}/>
+                <br/>
+                <h2>Other Branches</h2>
+                <BranchTable branchData={other}/>
+                <br/>
+                <h2>Stale Branches</h2>
+                <BranchTable branchData={stale}/>
+              </div>
             </div>
-            <div className="listArea">
-              <h2>All Branches</h2>
-              <BranchTable branchData={all}/>
-              <br/>
-              <h2>Feat Branches</h2>
-              <BranchTable branchData={feat}/>
-              <h2>Merged Branches</h2>
-              <BranchTable branchData={merged}/>
-              <br/>
-              <h2>Unmerged Branches</h2>
-              <BranchTable branchData={unmerged}/>
-              <br/>
-              <h2>Spike Branches</h2>
-              <BranchTable branchData={spike}/>
-              <br/>
-              <h2>Fix Branches</h2>
-              <BranchTable branchData={fix}/>
-              <br/>
-              <h2>Other Branches</h2>
-              <BranchTable branchData={other}/>
-              <br/>
-              <h2>Stale Branches</h2>
-              <BranchTable branchData={stale}/>
-            </div>
-          </div>
+          </Router>
         )
     }
 }
