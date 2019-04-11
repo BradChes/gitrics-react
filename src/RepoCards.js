@@ -63,4 +63,4 @@ class RepoCards extends Component {
     }
   }
 
-  export default RepoCards
+  export default RepoCards;
