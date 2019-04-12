@@ -60,16 +60,19 @@ class RepoCards extends Component {
   
     return (
       <div className="container">
-        <h1>gitrics</h1>
-        <h2>{params.repoName}</h2>
-        <h3>Status</h3>
+        <h1>Gitrics for: {params.repoName}</h1>
+        <h3>Branch Sizes:</h3>
         <div className="cardArea">
           <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
           <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
           <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
         </div>
+        <h3>Average Branch Lifetime:</h3>
         <div className="cardArea">
-          <BranchStatus branchSize={lifetime} branchName={"All Lifetime"}/>
+          <BranchStatus branchSize={lifetime} branchName={"All"}/>
+          <BranchStatus branchSize={lifetime} branchName={"Features"}/>
+          <BranchStatus branchSize={lifetime} branchName={"Spike"}/>
+          <BranchStatus branchSize={lifetime} branchName={"Fix"}/>
         </div>
       </div>
     )
