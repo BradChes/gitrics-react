@@ -7,7 +7,10 @@ class RepoCards extends Component {
     unmerged: [],
     merged: [],
     stale: [],
-    lifetime: String
+    allLifetime: String,
+    featureLifetime: String,
+    spikeLifetime: String,
+    fixLifetime: String
   };
   
   componentDidMount() {
@@ -46,7 +49,10 @@ class RepoCards extends Component {
       .then(result => result.json())
       .then(result => {
         this.setState({
-          lifetime: result.allLifetime
+          allLifetime: result.allLifetime,
+          featureLifetime: result.featureLifetime,
+          spikeLifetime: result.spikeLifetime,
+          fixLifetime: result.fixLifetime
         })
       });
   }
@@ -56,12 +62,15 @@ class RepoCards extends Component {
     const unmerged = this.state.unmerged;
     const merged = this.state.merged;
     const stale = this.state.stale;
-    const lifetime = this.state.lifetime;
+    const allLifetime = this.state.allLifetime;
+    const featureLifetime = this.state.featureLifetime;
+    const spikeLifetime = this.state.spikeLifetime;
+    const fixLifetime = this.state.fixLifetime;
   
     return (
       <div className="container">
         <h1>Gitrics for: {params.repoName}</h1>
-        <h3>Branch Sizes:</h3>
+        <h3>Branch Type Sizes:</h3>
         <div className="cardArea">
           <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
           <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
@@ -69,10 +78,10 @@ class RepoCards extends Component {
         </div>
         <h3>Average Branch Lifetime:</h3>
         <div className="cardArea">
-          <BranchStatus branchSize={lifetime} branchName={"All"}/>
-          <BranchStatus branchSize={lifetime} branchName={"Features"}/>
-          <BranchStatus branchSize={lifetime} branchName={"Spike"}/>
-          <BranchStatus branchSize={lifetime} branchName={"Fix"}/>
+          <BranchStatus branchSize={allLifetime} branchName={"All"}/>
+          <BranchStatus branchSize={featureLifetime} branchName={"Features"}/>
+          <BranchStatus branchSize={spikeLifetime} branchName={"Spike"}/>
+          <BranchStatus branchSize={fixLifetime} branchName={"Fix"}/>
         </div>
       </div>
     )
