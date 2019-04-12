@@ -6,7 +6,8 @@ class RepoCards extends Component {
   state = {
     unmerged: [],
     merged: [],
-    stale: []
+    stale: [],
+    lifetime: String
   };
   
   componentDidMount() {
@@ -14,6 +15,7 @@ class RepoCards extends Component {
     const unmergedUrl = `${params.repoName}/branches/unmerged`;
     const mergedUrl = `${params.repoName}/branches/merged`;
     const staleUrl = `${params.repoName}/branches/stale`;
+    const lifetimeUrl = `${params.repoName}/branches/lifetime`;
 
     fetch(unmergedUrl)
       .then(result => result.json())
@@ -38,6 +40,14 @@ class RepoCards extends Component {
         this.setState({
         stale: result.branches
         })
+      });  
+
+    fetch(lifetimeUrl)
+      .then(result => result.json())
+      .then(result => {
+        this.setState({
+          lifetime: result.allLifetime
+        })
       });
   }
   
@@ -46,6 +56,7 @@ class RepoCards extends Component {
     const unmerged = this.state.unmerged;
     const merged = this.state.merged;
     const stale = this.state.stale;
+    const lifetime = this.state.lifetime;
   
     return (
       <div className="container">
@@ -56,9 +67,12 @@ class RepoCards extends Component {
           <BranchStatus branchSize={merged.length} branchName={"Merged"}/>
           <BranchStatus branchSize={stale.length} branchName={"Stale"}/>
           <BranchStatus branchSize={unmerged.length} branchName={"Unmerged"}/>
-          </div>
         </div>
-      )
+        <div className="cardArea">
+          <BranchStatus branchSize={lifetime} branchName={"All Lifetime"}/>
+        </div>
+      </div>
+    )
   }
 }
 
